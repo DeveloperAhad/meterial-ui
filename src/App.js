@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import {useState } from 'react';
+import Header from "./components/common/header";
+import HomePage from "./components/pages/home";
 import './App.css';
 
 function App() {
+  const [newesCata, setNewesCata] = useState("");
+  const searchNewsHandler = (id) => {
+    setNewesCata(id);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header searchNewsHandler={searchNewsHandler}/>
+      <HomePage newesCata={newesCata}/>
     </div>
   );
 }
