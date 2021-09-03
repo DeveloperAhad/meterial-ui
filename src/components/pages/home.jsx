@@ -39,7 +39,7 @@ function HomePage({newesCata}) {
         if(newesCata !== "") {
             setNewes([]);
             setLoader(true);
-            fetch(`https://newsapi.org/v2/everything?q=${newesCata}&from=2021-08-02&sortBy=publishedAt&apiKey=fdfcdcc975a14f61abd8a0e228f98d44`).then(res => res.json()).then(data => {
+            fetch(`https://newsapi.org/v2/everything?q=${newesCata}&apiKey=fdfcdcc975a14f61abd8a0e228f98d44`).then(res => res.json()).then(data => {
                 setNewes(data.articles);
                 setLoader(false);
                 console.log(data);

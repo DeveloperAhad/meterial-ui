@@ -79,6 +79,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar({searchNewsHandler}) {
   const classes = useStyles();
 
+  const searchInputHandler = (e) => {
+    if(e.code === "Enter") {
+      searchNewsHandler(e.target.value);
+    }
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -95,7 +101,7 @@ export default function SearchAppBar({searchNewsHandler}) {
             Newes
           </Typography>
           <BottomNavigation showLabels className={classes.buttonNavigation}>
-                <BottomNavigationAction className={classes.buttonIcon} label="entertainment" onClick={() => searchNewsHandler("Entertainment")} icon={<MovieFilterIcon />} />
+                <BottomNavigationAction className={classes.buttonIcon} label="Entertainment" onClick={() => searchNewsHandler("Entertainment")} icon={<MovieFilterIcon />} />
                 <BottomNavigationAction className={classes.buttonIcon} label="Sports" onClick={() => searchNewsHandler("Sports")} icon={<SportsSoccerIcon />} />
                 <BottomNavigationAction  className={classes.buttonIcon} label="Lifestyle" onClick={() => searchNewsHandler("Lifestyle")} icon={<BeachAccessIcon/>} />
                 <BottomNavigationAction  className={classes.buttonIcon} label="Science" onClick={() => searchNewsHandler("Science")} icon={<AcUnitIcon/>} />
@@ -111,6 +117,7 @@ export default function SearchAppBar({searchNewsHandler}) {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onKeyUp={searchInputHandler}
             />
           </div>
         </Toolbar>
