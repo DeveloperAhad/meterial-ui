@@ -12,11 +12,14 @@ function NewsCard({newsData}) {
     return (
         <Card style={{marginTop: '30px'}}>
             <CardActionArea>
-                <CardMedia
-                style={{height: 250}}
-                image={newsData.urlToImage}
-                title="Contemplative Reptile"
-                />
+                {newsData.urlToImage && (
+                    <CardMedia
+                    component="img"
+                    style={{height: 250}}
+                    title="Contemplative Reptile"
+                    src={newsData.urlToImage}
+                    />
+                )}
                 <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                     {newsData.title}
